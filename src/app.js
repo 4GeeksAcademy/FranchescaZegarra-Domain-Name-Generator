@@ -40,13 +40,18 @@ function generateName(firstArray, secondArray, thirdArray) {
   return nameOfDomain;
 }
 
-document.getElementById("domainNameGenerator").innerHTML = generateName(
-  newPronoun,
-  newAdj,
-  newNoun
-);
 document.getElementById("numberOfDomains").innerHTML = generateName(
   newPronoun,
   newAdj,
   newNoun
 ).length;
+
+let domainNames = generateName(newPronoun, newAdj, newNoun);
+let domainList = document.getElementById("domainNameGenerator");
+for (let i = 0; i < domainNames.length; i++) {
+  let listItem = document.createElement("li");
+  listItem.textContent = domainNames[i];
+  listItem.classList.add("list-group-item");
+  listItem.classList.add("list-group-item-warning");
+  domainList.appendChild(listItem);
+}
